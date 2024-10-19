@@ -3,26 +3,23 @@
 
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-  outputs = {
-    self,
-    nixpkgs,
-    ...
-  }: {
+  outputs = { self, nixpkgs, ... }: {
     ##### x86_64-linux #####
-    packages.x86_64-linux = let
-      pkgs = import nixpkgs {system = "x86_64-linux";};
-    in {
-      thorium-avx = let
-        pkgs = import nixpkgs {system = "x86_64-linux";};
-        name = "thorium-avx";
-        version = "122.0.6261.132 - 56";
-        src = pkgs.fetchurl {
-          url = "https://github.com/Alex313031/thorium/releases/download/M122.0.6261.132/thorium_browser_122.0.6261.132_AVX.AppImage";
-          sha256 = "sha256-2PJxnKzppjHrYQnGYYe1BG0075FwDdnjY0JI2X5AIvQ=";
-        };
-        appimageContents = pkgs.appimageTools.extractType2 {inherit name src;};
-      in
-        pkgs.appimageTools.wrapType2 {
+    packages.x86_64-linux =
+      let pkgs = import nixpkgs { system = "x86_64-linux"; };
+      in {
+        thorium-avx = let
+          pkgs = import nixpkgs { system = "x86_64-linux"; };
+          name = "thorium-avx";
+          version = "128.0.6613.189 - 61";
+          src = pkgs.fetchurl {
+            url =
+              "https://github.com/Alex313031/thorium/releases/download/M128.0.6613.189/Thorium_Browser_128.0.6613.189_AVX.AppImage";
+            sha256 = "0sqj9i85i9i5sqbabs6z7qc9489rwv9g8wdni6bdh6qa3hpwgj35";
+          };
+          appimageContents =
+            pkgs.appimageTools.extractType2 { inherit name src; };
+        in pkgs.appimageTools.wrapType2 {
           inherit name version src;
           extraInstallCommands = ''
             install -m 444 -D ${appimageContents}/thorium-browser.desktop $out/share/applications/thorium-browser.desktop
@@ -32,17 +29,18 @@
           '';
         };
 
-      thorium-avx2 = let
-        pkgs = import nixpkgs {system = "x86_64-linux";};
-        name = "thorium-avx2";
-        version = "122.0.6261.132 - 56";
-        src = pkgs.fetchurl {
-          url = "https://github.com/Alex313031/thorium/releases/download/M122.0.6261.132/thorium_browser_122.0.6261.132_AVX2.AppImage";
-          sha256 = "sha256-HANrDUv/oFW2uWLSYilTCzdnZDY1yuqhLo/jRQil3QA=";
-        };
-        appimageContents = pkgs.appimageTools.extractType2 {inherit name src;};
-      in
-        pkgs.appimageTools.wrapType2 {
+        thorium-avx2 = let
+          pkgs = import nixpkgs { system = "x86_64-linux"; };
+          name = "thorium-avx2";
+          version = "128.0.6613.189 - 61";
+          src = pkgs.fetchurl {
+            url =
+              "https://github.com/Alex313031/thorium/releases/download/M128.0.6613.189/Thorium_Browser_128.0.6613.189_AVX2.AppImage";
+            sha256 = "05cjx4iqs4y9y04h6axydmj6kldd13v9zp82bq50xs051hdd44s4";
+          };
+          appimageContents =
+            pkgs.appimageTools.extractType2 { inherit name src; };
+        in pkgs.appimageTools.wrapType2 {
           inherit name version src;
           extraInstallCommands = ''
             install -m 444 -D ${appimageContents}/thorium-browser.desktop $out/share/applications/thorium-browser.desktop
@@ -52,17 +50,18 @@
           '';
         };
 
-      thorium-sse3 = let
-        pkgs = import nixpkgs {system = "x86_64-linux";};
-        name = "thorium-sse3";
-        version = "122.0.6261.132 - 56";
-        src = pkgs.fetchurl {
-          url = "https://github.com/Alex313031/thorium/releases/download/M122.0.6261.132/thorium_browser_122.0.6261.132_SSE3.AppImage";
-          sha256 = "sha256-G+Z85w7d7YT/03tqcH1VMJGoenoegcttbxz38u0JWcI=";
-        };
-        appimageContents = pkgs.appimageTools.extractType2 {inherit name src;};
-      in
-        pkgs.appimageTools.wrapType2 {
+        thorium-sse3 = let
+          pkgs = import nixpkgs { system = "x86_64-linux"; };
+          name = "thorium-sse3";
+          version = "128.0.6613.189 - 61";
+          src = pkgs.fetchurl {
+            url =
+              "https://github.com/Alex313031/thorium/releases/download/M128.0.6613.189/Thorium_Browser_128.0.6613.189_SSE3.AppImage";
+            sha256 = "00zvf0pia30ixgiscpflic4mhm67ps60a5fdh43dlqncci4d1fxv";
+          };
+          appimageContents =
+            pkgs.appimageTools.extractType2 { inherit name src; };
+        in pkgs.appimageTools.wrapType2 {
           inherit name version src;
           extraInstallCommands = ''
             install -m 444 -D ${appimageContents}/thorium-browser.desktop $out/share/applications/thorium-browser.desktop
@@ -72,9 +71,30 @@
           '';
         };
 
-      # AVX is compatible with most CPUs
-      default = self.packages.x86_64-linux.thorium-avx;
-    };
+        thorium-sse4 = let
+          pkgs = import nixpkgs { system = "x86_64-linux"; };
+          name = "thorium-sse4";
+          version = "128.0.6613.189 - 61";
+          src = pkgs.fetchurl {
+            url =
+              "https://github.com/Alex313031/thorium/releases/download/M128.0.6613.189/Thorium_Browser_128.0.6613.189_SSE4.AppImage";
+            sha256 = "17cz64qvhjz70b2bqlj84l4h4z8g18j6g1spk8gpaiy668pwgbbb";
+          };
+          appimageContents =
+            pkgs.appimageTools.extractType2 { inherit name src; };
+        in pkgs.appimageTools.wrapType2 {
+          inherit name version src;
+          extraInstallCommands = ''
+            install -m 444 -D ${appimageContents}/thorium-browser.desktop $out/share/applications/thorium-browser.desktop
+            install -m 444 -D ${appimageContents}/thorium.png $out/share/icons/hicolor/512x512/apps/thorium.png
+            substituteInPlace $out/share/applications/thorium-browser.desktop \
+            --replace 'Exec=AppRun --no-sandbox %U' 'Exec=${name} %U'
+          '';
+        };
+
+        # AVX is compatible with most CPUs
+        default = self.packages.x86_64-linux.thorium-avx;
+      };
 
     apps.x86_64-linux = {
       thorium-avx = {
@@ -90,6 +110,11 @@
       thorium-sse3 = {
         type = "app";
         program = "${self.packages.x86_64-linux.thorium-sse3}/bin/thorium-sse3";
+      };
+
+      thorium-sse4 = {
+        type = "app";
+        program = "${self.packages.x86_64-linux.thorium-sse4}/bin/thorium-sse4";
       };
 
       default = self.apps.x86_64-linux.thorium-avx;
