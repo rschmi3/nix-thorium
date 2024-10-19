@@ -123,24 +123,25 @@
     ##### aarch64-linux #####
     packages.aarch64-linux = {
       thorium = let
-        pkgs = import nixpkgs {system = "aarch64-linux";};
+        pkgs = import nixpkgs { system = "aarch64-linux"; };
         name = "thorium";
-        version = "122.0.6261.132 - 6";
+        version = "126.0.6478.246 - 10";
         src = pkgs.fetchurl {
-          url = "https://github.com/Alex313031/Thorium-Raspi/releases/download/M122.0.6261.132/Thorium_Browser_122.0.6261.132_arm64.AppImage";
-          sha256 = "sha256-gS3/f7wq5adOLZuS2T8SWfme/Z1bFqHSpMLUsENKlcw=";
+          url =
+            "https://github.com/Alex313031/Thorium-Raspi/releases/download/M126.0.6478.246/Thorium_Browser_126.0.6478.246_arm64.AppImage";
+          sha256 = "0g82i1j9jv9h2ch9rd67cl46rg8siyr55af9hp4jmmlh5gc5fhpc";
         };
-        appimageContents = pkgs.appimageTools.extractType2 {inherit name src;};
-      in
-        pkgs.appimageTools.wrapType2 {
-          inherit name version src;
-          extraInstallCommands = ''
-            install -m 444 -D ${appimageContents}/thorium-browser.desktop $out/share/applications/thorium-browser.desktop
-            install -m 444 -D ${appimageContents}/thorium.png $out/share/icons/hicolor/512x512/apps/thorium.png
-            substituteInPlace $out/share/applications/thorium-browser.desktop \
-            --replace 'Exec=AppRun --no-sandbox %U' 'Exec=${name} %U'
-          '';
-        };
+        appimageContents =
+          pkgs.appimageTools.extractType2 { inherit name src; };
+      in pkgs.appimageTools.wrapType2 {
+        inherit name version src;
+        extraInstallCommands = ''
+          install -m 444 -D ${appimageContents}/thorium-browser.desktop $out/share/applications/thorium-browser.desktop
+          install -m 444 -D ${appimageContents}/thorium.png $out/share/icons/hicolor/512x512/apps/thorium.png
+          substituteInPlace $out/share/applications/thorium-browser.desktop \
+          --replace 'Exec=AppRun --no-sandbox %U' 'Exec=${name} %U'
+        '';
+      };
 
       default = self.packages.aarch64-linux.thorium;
     };
