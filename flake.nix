@@ -22,9 +22,9 @@
           inherit name version src;
           extraInstallCommands = ''
             install -m 444 -D ${appimageContents}/thorium-browser.desktop $out/share/applications/thorium-browser.desktop
-            install -m 444 -D ${appimageContents}/thorium.png $out/share/icons/hicolor/512x512/apps/thorium.png
+            cp -r ${appimageContents}/usr/share/icons $out/share
             substituteInPlace $out/share/applications/thorium-browser.desktop \
-            --replace 'Exec=thorium' 'Exec=${name} %U'
+            --replace 'Exec=thorium' 'Exec=${name}'
           '';
         };
 
@@ -42,9 +42,9 @@
           inherit name version src;
           extraInstallCommands = ''
             install -m 444 -D ${appimageContents}/thorium-browser.desktop $out/share/applications/thorium-browser.desktop
-            install -m 444 -D ${appimageContents}/thorium.png $out/share/icons/hicolor/512x512/apps/thorium.png
+            cp -r ${appimageContents}/usr/share/icons $out/share
             substituteInPlace $out/share/applications/thorium-browser.desktop \
-            --replace 'Exec=thorium' 'Exec=${name} %U'
+            --replace 'Exec=thorium' 'Exec=${name}'
           '';
         };
 
@@ -62,9 +62,9 @@
           inherit name version src;
           extraInstallCommands = ''
             install -m 444 -D ${appimageContents}/thorium-browser.desktop $out/share/applications/thorium-browser.desktop
-            install -m 444 -D ${appimageContents}/thorium.png $out/share/icons/hicolor/512x512/apps/thorium.png
+            cp -r ${appimageContents}/usr/share/icons $out/share
             substituteInPlace $out/share/applications/thorium-browser.desktop \
-            --replace 'Exec=thorium' 'Exec=${name} %U'
+            --replace 'Exec=thorium' 'Exec=${name}'
           '';
         };
 
@@ -82,9 +82,9 @@
           inherit name version src;
           extraInstallCommands = ''
             install -m 444 -D ${appimageContents}/thorium-browser.desktop $out/share/applications/thorium-browser.desktop
-            install -m 444 -D ${appimageContents}/thorium.png $out/share/icons/hicolor/512x512/apps/thorium.png
+            cp -r ${appimageContents}/usr/share/icons $out/share
             substituteInPlace $out/share/applications/thorium-browser.desktop \
-            --replace 'Exec=thorium' 'Exec=${name} %U'
+            --replace 'Exec=thorium' 'Exec=${name}'
           '';
         };
 
@@ -132,9 +132,9 @@
         inherit name version src;
         extraInstallCommands = ''
           install -m 444 -D ${appimageContents}/thorium-browser.desktop $out/share/applications/thorium-browser.desktop
-          install -m 444 -D ${appimageContents}/thorium.png $out/share/icons/hicolor/512x512/apps/thorium.png
+          cp -r ${appimageContents}/usr/share/icons $out/share
           substituteInPlace $out/share/applications/thorium-browser.desktop \
-          --replace 'Exec=thorium' 'Exec=${name} %U'
+          --replace 'Exec=thorium' 'Exec=${name}'
         '';
       };
 
