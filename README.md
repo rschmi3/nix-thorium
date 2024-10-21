@@ -14,3 +14,21 @@ nix run github:rschmi3/nix-thorium
 ```bash
 nix profile install github:rschmi3/nix-thorium
 ```
+
+## Installation with flakes
+Add flake input
+```
+nix-thorium = {
+    url = "github:rschmi3/nix-thorium";
+    inputs.nixpkgs.follows = "nixpkgs";
+};
+```
+Pass inputs to configuration.nix using specialArgs
+
+Install package
+```
+environment.systemPackages = with pkgs; [
+    inputs.nix-thorium.packages.x86_64-linux.thorium-sse4
+];
+
+```
