@@ -17,8 +17,7 @@
               "https://github.com/Alex313031/thorium/releases/download/M128.0.6613.189/Thorium_Browser_128.0.6613.189_AVX.AppImage";
             sha256 = "0sqj9i85i9i5sqbabs6z7qc9489rwv9g8wdni6bdh6qa3hpwgj35";
           };
-          appimageContents =
-            pkgs.appimageTools.extractType2 { inherit name src; };
+          appimageContents = pkgs.appimageTools.extract { inherit name src; };
         in pkgs.appimageTools.wrapType2 {
           inherit name version src;
           extraInstallCommands = ''
@@ -38,8 +37,7 @@
               "https://github.com/Alex313031/thorium/releases/download/M128.0.6613.189/Thorium_Browser_128.0.6613.189_AVX2.AppImage";
             sha256 = "05cjx4iqs4y9y04h6axydmj6kldd13v9zp82bq50xs051hdd44s4";
           };
-          appimageContents =
-            pkgs.appimageTools.extractType2 { inherit name src; };
+          appimageContents = pkgs.appimageTools.extract { inherit name src; };
         in pkgs.appimageTools.wrapType2 {
           inherit name version src;
           extraInstallCommands = ''
@@ -59,8 +57,7 @@
               "https://github.com/Alex313031/thorium/releases/download/M128.0.6613.189/Thorium_Browser_128.0.6613.189_SSE3.AppImage";
             sha256 = "00zvf0pia30ixgiscpflic4mhm67ps60a5fdh43dlqncci4d1fxv";
           };
-          appimageContents =
-            pkgs.appimageTools.extractType2 { inherit name src; };
+          appimageContents = pkgs.appimageTools.extract { inherit name src; };
         in pkgs.appimageTools.wrapType2 {
           inherit name version src;
           extraInstallCommands = ''
@@ -80,8 +77,7 @@
               "https://github.com/Alex313031/thorium/releases/download/M128.0.6613.189/Thorium_Browser_128.0.6613.189_SSE4.AppImage";
             sha256 = "17cz64qvhjz70b2bqlj84l4h4z8g18j6g1spk8gpaiy668pwgbbb";
           };
-          appimageContents =
-            pkgs.appimageTools.extractType2 { inherit name src; };
+          appimageContents = pkgs.appimageTools.extract { inherit name src; };
         in pkgs.appimageTools.wrapType2 {
           inherit name version src;
           extraInstallCommands = ''
@@ -131,8 +127,7 @@
             "https://github.com/Alex313031/Thorium-Raspi/releases/download/M126.0.6478.246/Thorium_Browser_126.0.6478.246_arm64.AppImage";
           sha256 = "0g82i1j9jv9h2ch9rd67cl46rg8siyr55af9hp4jmmlh5gc5fhpc";
         };
-        appimageContents =
-          pkgs.appimageTools.extractType2 { inherit name src; };
+        appimageContents = pkgs.appimageTools.extract { inherit name src; };
       in pkgs.appimageTools.wrapType2 {
         inherit name version src;
         extraInstallCommands = ''
